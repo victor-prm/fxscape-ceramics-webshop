@@ -1,10 +1,17 @@
 {
-    "name": "Project Template - Hello World",
+    "name": "Webshop Workshop C&C",
     "components": [
         {
             "name": "/App",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "a3e714e4-4a64-933e-717e-a80b71c6c7e6",
+                        "fromProperty": "items",
+                        "toId": "fe1f6707-f435-8466-227a-39eaa8232d49",
+                        "toProperty": "items"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "246f9453-a119-ac78-171e-3806cf596ecc",
@@ -22,15 +29,23 @@
                         "dynamicports": [],
                         "children": [
                             {
+                                "id": "4728347e-b66e-9a8b-2e98-6d49f8753d83",
+                                "type": "/Header",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
                                 "id": "a24a02ae-c1b8-1250-72c3-a1d48cbc9558",
                                 "type": "Router",
                                 "parameters": {
                                     "name": "Main",
                                     "pages": {
                                         "routes": [
-                                            "/Start Page"
+                                            "/Products Page"
                                         ],
-                                        "startPage": "/Start Page"
+                                        "startPage": "/Products Page"
                                     }
                                 },
                                 "ports": [],
@@ -38,7 +53,36 @@
                                 "children": []
                             }
                         ]
+                    },
+                    {
+                        "id": "a3e714e4-4a64-933e-717e-a80b71c6c7e6",
+                        "type": "Static Data",
+                        "label": "Local Items",
+                        "x": -589,
+                        "y": 120,
+                        "parameters": {
+                            "type": "csv",
+                            "csv": "ProductName,Maker,Category,Price\nContrast,Tom Crew,Accessories,40\nFerrous,Tom Crew,Accessories,50\nFika,Tom Crew,Tableware,35\nGlacier Bowl,Tom Crew,Tableware,40\nGlacier Plate,Tom Crew,Tableware,45\nGlacier Vase,Tom Crew,Vase,60\nPrism,Tom Crew,Tableware,40\nBirch,Oriento,Vase,88\nCarafe,Oriento,Tableware,75\nCorroded,Oriento,Accessories,68\nDot,Oriento,Accessories,55\nFjord,Oriento,Vase,98\nSeasons,Oriento,Vase,160\nZodiac,Oriento,Accessories,130\nBouy,Linh Le,Vase,75\nDrop,Linh Le,Vase,75\nFace no. 1,Linh Le,Vase,85\nFace no. 2,Linh Le,Vase,115\nGestalt,Linh Le,Vase,80"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "fe1f6707-f435-8466-227a-39eaa8232d49",
+                        "type": "Collection2",
+                        "x": -369.96819153012916,
+                        "y": 133.9376377651178,
+                        "parameters": {
+                            "collectionId": "All Products"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
                     }
+                ],
+                "visualRoots": [
+                    "246f9453-a119-ac78-171e-3806cf596ecc"
                 ]
             },
             "metadata": {
@@ -53,10 +97,785 @@
             }
         },
         {
-            "name": "/Start Page",
+            "name": "/Clickable Text Button",
+            "id": "b2a9a905-51d8-2793-9ebb-e90d5a798ad0",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "8525998f-f07b-035c-88ea-c56adacb7fcd",
+                        "fromProperty": "Label",
+                        "toId": "b7b904ae-cd17-fa05-0f45-9d7f1e39c719",
+                        "toProperty": "label"
+                    },
+                    {
+                        "fromId": "b7b904ae-cd17-fa05-0f45-9d7f1e39c719",
+                        "fromProperty": "hoverStart",
+                        "toId": "63fb2d41-ef16-dd16-beee-264fd7911893",
+                        "toProperty": "to-Hovered"
+                    },
+                    {
+                        "fromId": "b7b904ae-cd17-fa05-0f45-9d7f1e39c719",
+                        "fromProperty": "hoverEnd",
+                        "toId": "63fb2d41-ef16-dd16-beee-264fd7911893",
+                        "toProperty": "to-Neutral"
+                    },
+                    {
+                        "fromId": "63fb2d41-ef16-dd16-beee-264fd7911893",
+                        "fromProperty": "Underline Width",
+                        "toId": "bdaa7cf2-c2e8-2914-a8bb-305ea18b4efe",
+                        "toProperty": "width"
+                    },
+                    {
+                        "fromId": "b7b904ae-cd17-fa05-0f45-9d7f1e39c719",
+                        "fromProperty": "onClick",
+                        "toId": "c70dd3f6-5bcb-8859-fe54-8819a5517ffd",
+                        "toProperty": "Button Clicked"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "8525998f-f07b-035c-88ea-c56adacb7fcd",
+                        "type": "Component Inputs",
+                        "x": -314,
+                        "y": 79,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Label",
+                                "plug": "output",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "63fb2d41-ef16-dd16-beee-264fd7911893",
+                        "type": "States",
+                        "x": 377,
+                        "y": -11,
+                        "parameters": {
+                            "states": "Neutral,Hovered",
+                            "values": "Underline Width",
+                            "value-Neutral-Underline Width": 0,
+                            "value-Hovered-Underline Width": 100,
+                            "transition-Neutral-Underline Width": {
+                                "curve": [
+                                    0,
+                                    0,
+                                    0.58,
+                                    1
+                                ],
+                                "dur": 300,
+                                "delay": 0
+                            }
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": {
+                                    "name": "number",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "output",
+                                "group": "Values",
+                                "name": "Underline Width",
+                                "index": 6
+                            },
+                            {
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "label": "Number",
+                                            "value": "number"
+                                        },
+                                        {
+                                            "label": "String",
+                                            "value": "string"
+                                        },
+                                        {
+                                            "label": "Boolean",
+                                            "value": "boolean"
+                                        },
+                                        {
+                                            "label": "Color",
+                                            "value": "color"
+                                        },
+                                        {
+                                            "label": "Text Style",
+                                            "value": "textStyle"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "default": "number",
+                                "plug": "input",
+                                "group": "Types",
+                                "displayName": "Underline Width",
+                                "name": "type-Underline Width",
+                                "index": 7
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "Neutral Values",
+                                "name": "value-Neutral-Underline Width",
+                                "displayName": "Underline Width",
+                                "editorName": "Neutral|Underline Width",
+                                "index": 8
+                            },
+                            {
+                                "plug": "input",
+                                "type": "curve",
+                                "displayName": "Default",
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 300,
+                                    "delay": 0
+                                },
+                                "group": "Neutral Transitions",
+                                "name": "transitiondef-Neutral",
+                                "index": 9
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "curve"
+                                },
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 300,
+                                    "delay": 0
+                                },
+                                "group": "Neutral Transitions",
+                                "name": "transition-Neutral-Underline Width",
+                                "displayName": "Underline Width",
+                                "editorName": "Transition Neutral|Underline Width",
+                                "index": 10
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "signal",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To Neutral",
+                                "name": "to-Neutral",
+                                "group": "Go to state",
+                                "index": 11
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At Neutral",
+                                "name": "at-Neutral",
+                                "group": "Current state",
+                                "index": 12
+                            },
+                            {
+                                "plug": "output",
+                                "type": "signal",
+                                "displayName": "Has Reached Neutral",
+                                "name": "reached-Neutral",
+                                "group": "Current state",
+                                "index": 13
+                            },
+                            {
+                                "plug": "input",
+                                "type": "number",
+                                "group": "Hovered Values",
+                                "name": "value-Hovered-Underline Width",
+                                "displayName": "Underline Width",
+                                "editorName": "Hovered|Underline Width",
+                                "index": 14
+                            },
+                            {
+                                "plug": "input",
+                                "type": "curve",
+                                "displayName": "Default",
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 300,
+                                    "delay": 0
+                                },
+                                "group": "Hovered Transitions",
+                                "name": "transitiondef-Hovered",
+                                "index": 15
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "curve"
+                                },
+                                "default": {
+                                    "curve": [
+                                        0,
+                                        0,
+                                        0.58,
+                                        1
+                                    ],
+                                    "dur": 300,
+                                    "delay": 0
+                                },
+                                "group": "Hovered Transitions",
+                                "name": "transition-Hovered-Underline Width",
+                                "displayName": "Underline Width",
+                                "editorName": "Transition Hovered|Underline Width",
+                                "index": 16
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "signal",
+                                    "allowConnectionsOnly": true
+                                },
+                                "displayName": "To Hovered",
+                                "name": "to-Hovered",
+                                "group": "Go to state",
+                                "index": 17
+                            },
+                            {
+                                "plug": "output",
+                                "type": "boolean",
+                                "displayName": "At Hovered",
+                                "name": "at-Hovered",
+                                "group": "Current state",
+                                "index": 18
+                            },
+                            {
+                                "plug": "output",
+                                "type": "signal",
+                                "displayName": "Has Reached Hovered",
+                                "name": "reached-Hovered",
+                                "group": "Current state",
+                                "index": 19
+                            },
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        "Neutral",
+                                        "Hovered"
+                                    ]
+                                },
+                                "group": "States",
+                                "displayName": "State",
+                                "name": "currentState",
+                                "default": "Neutral",
+                                "index": 20
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "4cd34f19-88d5-048f-9259-672403c9fbde",
+                        "type": "Group",
+                        "x": 34,
+                        "y": 44,
+                        "parameters": {
+                            "sizeMode": "contentSize"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "b7b904ae-cd17-fa05-0f45-9d7f1e39c719",
+                                "type": "net.noodl.controls.button",
+                                "parameters": {
+                                    "backgroundColor": "transparent",
+                                    "color": "Black",
+                                    "textStyle": "Title Large",
+                                    "paddingRight": {
+                                        "value": 4,
+                                        "unit": "px"
+                                    },
+                                    "paddingLeft": {
+                                        "value": 4,
+                                        "unit": "px"
+                                    }
+                                },
+                                "stateParameters": {
+                                    "hover": {}
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "bdaa7cf2-c2e8-2914-a8bb-305ea18b4efe",
+                                "type": "Group",
+                                "label": "Animating Underline",
+                                "parameters": {
+                                    "height": {
+                                        "value": 4,
+                                        "unit": "px"
+                                    },
+                                    "backgroundColor": "Black",
+                                    "position": "absolute",
+                                    "alignY": "bottom"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "c70dd3f6-5bcb-8859-fe54-8819a5517ffd",
+                        "type": "Component Outputs",
+                        "x": 514.6666666666667,
+                        "y": 172.16666666666663,
+                        "parameters": {},
+                        "ports": [
+                            {
+                                "name": "Button Clicked",
+                                "plug": "input",
+                                "type": {
+                                    "name": "*"
+                                },
+                                "index": 1
+                            }
+                        ],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ],
+                "visualRoots": [
+                    "4cd34f19-88d5-048f-9259-672403c9fbde"
+                ]
+            }
+        },
+        {
+            "name": "/Header",
+            "id": "b6481cc3-2bf6-1def-1859-822a3f6b5d25",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "12db4a8f-ebff-b7a7-deaf-8f8483fd51aa",
+                        "fromProperty": "Button Clicked",
+                        "toId": "1fe16282-57c5-de68-0ba8-7c9a53970ecf",
+                        "toProperty": "show"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "e0773e3c-e5e3-cf53-634c-ef51d37d335a",
+                        "type": "Group",
+                        "label": "Header Container",
+                        "x": 0,
+                        "y": 0,
+                        "parameters": {
+                            "height": {
+                                "value": 64,
+                                "unit": "px"
+                            },
+                            "borderBottomStyle": "solid",
+                            "borderBottomWidth": {
+                                "value": 4,
+                                "unit": "px"
+                            },
+                            "borderBottomColor": "Black",
+                            "paddingTop": {
+                                "value": 8,
+                                "unit": "px"
+                            },
+                            "paddingBottom": {
+                                "value": 8,
+                                "unit": "px"
+                            },
+                            "paddingLeft": {
+                                "value": 16,
+                                "unit": "px"
+                            },
+                            "paddingRight": {
+                                "value": 16,
+                                "unit": "px"
+                            },
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "alignItems": "center"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "65c7ae78-835f-9740-1d80-193b324f1f18",
+                                "type": "Image",
+                                "parameters": {
+                                    "src": "images/signature.png",
+                                    "sizeMode": "contentWidth"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "12db4a8f-ebff-b7a7-deaf-8f8483fd51aa",
+                                "type": "/Clickable Text Button",
+                                "parameters": {
+                                    "Label": "Cart"
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            }
+                        ]
+                    },
+                    {
+                        "id": "1fe16282-57c5-de68-0ba8-7c9a53970ecf",
+                        "type": "NavigationShowPopup",
+                        "x": 312,
+                        "y": 98.69921875,
+                        "parameters": {
+                            "target": "/Shopping Cart"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ],
+                "visualRoots": [
+                    "e0773e3c-e5e3-cf53-634c-ef51d37d335a"
+                ]
+            }
+        },
+        {
+            "name": "/Product Card",
+            "id": "3b3d00ff-6102-5c96-3512-593f5a7622a7",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
+                        "fromProperty": "prop-ProductName",
+                        "toId": "0aba9836-7685-08cd-9c6c-5d48449d8a8a",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
+                        "fromProperty": "prop-Maker",
+                        "toId": "0e4a0dc6-d92c-c4ce-027c-b6fac854115c",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
+                        "fromProperty": "prop-Price",
+                        "toId": "62412f7b-1eda-6f47-4598-3eab7bf84c23",
+                        "toProperty": "myPrice"
+                    },
+                    {
+                        "fromId": "62412f7b-1eda-6f47-4598-3eab7bf84c23",
+                        "fromProperty": "formatted",
+                        "toId": "04141bbc-a126-c2dc-eb78-69869199d284",
+                        "toProperty": "text"
+                    },
+                    {
+                        "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
+                        "fromProperty": "prop-Maker",
+                        "toId": "bac9ecc4-0ea5-a1f8-6e54-faa6558edb38",
+                        "toProperty": "makerName"
+                    },
+                    {
+                        "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
+                        "fromProperty": "prop-ProductName",
+                        "toId": "bac9ecc4-0ea5-a1f8-6e54-faa6558edb38",
+                        "toProperty": "productName"
+                    },
+                    {
+                        "fromId": "bac9ecc4-0ea5-a1f8-6e54-faa6558edb38",
+                        "fromProperty": "formatted",
+                        "toId": "06cb9177-50d9-cf8f-e4db-1fb71ab1029a",
+                        "toProperty": "src"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "67392606-0ab5-2789-a573-ee713e66b368",
+                        "type": "Group",
+                        "label": "Product Container",
+                        "x": 44.18093441391392,
+                        "y": -6.0246728746246845,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "bc857682-bf82-3ffa-2aae-066ce383669e",
+                                "type": "Group",
+                                "label": "Image Container",
+                                "parameters": {},
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "06cb9177-50d9-cf8f-e4db-1fb71ab1029a",
+                                        "type": "Image",
+                                        "parameters": {
+                                            "src": "drop.jpg",
+                                            "sizeMode": "explicit"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            },
+                            {
+                                "id": "a3f421b4-c688-cf47-0a23-c461bfef3b4d",
+                                "type": "Group",
+                                "label": "Text Container",
+                                "parameters": {
+                                    "paddingTop": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 8,
+                                        "unit": "px"
+                                    },
+                                    "paddingLeft": {
+                                        "value": 8,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "0aba9836-7685-08cd-9c6c-5d48449d8a8a",
+                                        "type": "Text",
+                                        "label": "Product Name",
+                                        "parameters": {
+                                            "textStyle": "Title Medium",
+                                            "text": "Product Name",
+                                            "sizeMode": "contentSize",
+                                            "marginBottom": {
+                                                "value": 8,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    },
+                                    {
+                                        "id": "1cc88a50-1816-cbbd-0698-c0e436d6316d",
+                                        "type": "Group",
+                                        "parameters": {
+                                            "flexDirection": "row",
+                                            "justifyContent": "space-between",
+                                            "alignItems": "center"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "0e4a0dc6-d92c-c4ce-027c-b6fac854115c",
+                                                "type": "Text",
+                                                "label": "Maker",
+                                                "parameters": {
+                                                    "textStyle": "Body Medium",
+                                                    "text": "Maker",
+                                                    "sizeMode": "contentSize"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            },
+                                            {
+                                                "id": "04141bbc-a126-c2dc-eb78-69869199d284",
+                                                "type": "Text",
+                                                "label": "Price",
+                                                "parameters": {
+                                                    "textStyle": "Body Medium",
+                                                    "text": "Price",
+                                                    "sizeMode": "contentSize"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [],
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "id": "f33ba429-b725-f938-7b8a-c2f74e166283",
+                        "type": "Model2",
+                        "x": -595,
+                        "y": 223,
+                        "parameters": {
+                            "idSource": "foreach",
+                            "properties": "ProductName,Maker,Category,Price"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": {
+                                    "name": "*",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "input/output",
+                                "group": "Properties",
+                                "name": "prop-ProductName",
+                                "displayName": "ProductName",
+                                "index": 7
+                            },
+                            {
+                                "type": "signal",
+                                "plug": "output",
+                                "group": "Changed Events",
+                                "displayName": "ProductName Changed",
+                                "name": "changed-ProductName",
+                                "index": 8
+                            },
+                            {
+                                "type": {
+                                    "name": "*",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "input/output",
+                                "group": "Properties",
+                                "name": "prop-Maker",
+                                "displayName": "Maker",
+                                "index": 9
+                            },
+                            {
+                                "type": "signal",
+                                "plug": "output",
+                                "group": "Changed Events",
+                                "displayName": "Maker Changed",
+                                "name": "changed-Maker",
+                                "index": 10
+                            },
+                            {
+                                "type": {
+                                    "name": "*",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "input/output",
+                                "group": "Properties",
+                                "name": "prop-Category",
+                                "displayName": "Category",
+                                "index": 11
+                            },
+                            {
+                                "type": "signal",
+                                "plug": "output",
+                                "group": "Changed Events",
+                                "displayName": "Category Changed",
+                                "name": "changed-Category",
+                                "index": 12
+                            },
+                            {
+                                "type": {
+                                    "name": "*",
+                                    "allowConnectionsOnly": true
+                                },
+                                "plug": "input/output",
+                                "group": "Properties",
+                                "name": "prop-Price",
+                                "displayName": "Price",
+                                "index": 13
+                            },
+                            {
+                                "type": "signal",
+                                "plug": "output",
+                                "group": "Changed Events",
+                                "displayName": "Price Changed",
+                                "name": "changed-Price",
+                                "index": 14
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "62412f7b-1eda-6f47-4598-3eab7bf84c23",
+                        "type": "String Format",
+                        "x": -199,
+                        "y": 427,
+                        "parameters": {
+                            "format": "€{myPrice}"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "myPrice",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "bac9ecc4-0ea5-a1f8-6e54-faa6558edb38",
+                        "type": "String Format",
+                        "x": -202.38978218476802,
+                        "y": 148.37174413196533,
+                        "parameters": {
+                            "format": "/images/ceramics/{makerName}/{productName}.jpg"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "makerName",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 2
+                            },
+                            {
+                                "name": "productName",
+                                "type": "string",
+                                "plug": "input",
+                                "index": 3
+                            }
+                        ],
+                        "children": []
+                    }
+                ],
+                "visualRoots": [
+                    "67392606-0ab5-2789-a573-ee713e66b368"
+                ]
+            }
+        },
+        {
+            "name": "/Products Page",
             "id": "69559017-a17f-333b-c101-fbb0d1b4ce31",
             "graph": {
-                "connections": [],
+                "connections": [
+                    {
+                        "fromId": "93f7add7-4109-09ce-eb80-3e0cdf7b5b14",
+                        "fromProperty": "items",
+                        "toId": "b4e503ab-0c60-b3f5-6a42-4710fba730a8",
+                        "toProperty": "items"
+                    }
+                ],
                 "roots": [
                     {
                         "id": "a4b7e4d4-c01d-1267-30b6-c2b448b90067",
@@ -72,8 +891,8 @@
                                 "type": "string",
                                 "group": "General",
                                 "plug": "input",
-                                "default": "Start Page",
-                                "index": 14
+                                "default": "Products Page",
+                                "index": 31
                             },
                             {
                                 "name": "urlPath",
@@ -81,24 +900,74 @@
                                 "type": "string",
                                 "group": "General",
                                 "plug": "input",
-                                "default": "start-page",
-                                "index": 15
+                                "default": "products-page",
+                                "index": 32
                             }
                         ],
                         "children": [
                             {
-                                "id": "fcfbc04f-65ce-bf80-9c09-6cdca911f3fe",
-                                "type": "Text",
+                                "id": "21aaa6a6-6af8-25fe-7552-11e81b58bb82",
+                                "type": "Group",
                                 "parameters": {
-                                    "alignX": "center",
-                                    "alignY": "center",
-                                    "textAlignX": "center",
-                                    "textStyle": "Display",
-                                    "text": "Hello World!"
+                                    "paddingTop": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingLeft": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    }
                                 },
                                 "ports": [],
                                 "dynamicports": [],
-                                "children": []
+                                "children": [
+                                    {
+                                        "id": "a755a0fa-f7f2-dc7a-fc0a-f641684ed329",
+                                        "type": "net.noodl.visual.columns",
+                                        "parameters": {
+                                            "layoutString": "1 1 1 1",
+                                            "minWidth": {
+                                                "value": 240,
+                                                "unit": "px"
+                                            }
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": [
+                                            {
+                                                "id": "b4e503ab-0c60-b3f5-6a42-4710fba730a8",
+                                                "type": "For Each",
+                                                "parameters": {
+                                                    "template": "/Product Card"
+                                                },
+                                                "ports": [],
+                                                "dynamicports": [
+                                                    {
+                                                        "name": "inputMappingScript",
+                                                        "type": {
+                                                            "name": "string",
+                                                            "codeeditor": "javascript"
+                                                        },
+                                                        "displayName": "Script",
+                                                        "group": "Input Mapping",
+                                                        "default": "// Here you add mappings between the properties of the item objects and the inputs of the components.\n// 'myComponentInput': 'myObjectProperty',\n// 'anotherComponentInput': function () { return object.get('someProperty') + ' ' + object.get('otherProp') }\n// These are the default mappings based on the selected template component.\nmap({\n})\n",
+                                                        "plug": "input",
+                                                        "index": 6
+                                                    }
+                                                ],
+                                                "children": []
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
@@ -111,7 +980,120 @@
                         "ports": [],
                         "dynamicports": [],
                         "children": []
+                    },
+                    {
+                        "id": "93f7add7-4109-09ce-eb80-3e0cdf7b5b14",
+                        "type": "Collection2",
+                        "x": -417,
+                        "y": 119.5,
+                        "parameters": {
+                            "collectionId": "All Products"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
                     }
+                ],
+                "visualRoots": [
+                    "a4b7e4d4-c01d-1267-30b6-c2b448b90067"
+                ]
+            }
+        },
+        {
+            "name": "/Shopping Cart",
+            "id": "93872f9b-2aa6-b314-69e4-6458e8766d42",
+            "graph": {
+                "connections": [
+                    {
+                        "fromId": "5f252a3a-6dea-7aa2-2407-06ecaa0c3054",
+                        "fromProperty": "onClick",
+                        "toId": "8d15d20d-bea0-934c-7bd5-d16cc2f6802c",
+                        "toProperty": "close"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "8d15d20d-bea0-934c-7bd5-d16cc2f6802c",
+                        "type": "NavigationClosePopup",
+                        "x": 257,
+                        "y": -33.5,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "9a3b5705-92f0-959d-72e8-eb22cf446ad6",
+                        "type": "Group",
+                        "label": "Pop up container",
+                        "x": -62,
+                        "y": -66.5,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": [
+                            {
+                                "id": "5f252a3a-6dea-7aa2-2407-06ecaa0c3054",
+                                "type": "Group",
+                                "label": "Blue Overlay",
+                                "parameters": {
+                                    "backgroundColor": "Petroleum Blue",
+                                    "opacity": 0.75
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": []
+                            },
+                            {
+                                "id": "381128b3-8dc2-a31a-76ab-d79957be4c38",
+                                "type": "Group",
+                                "label": "Shopping Cart Container",
+                                "parameters": {
+                                    "width": {
+                                        "value": 400,
+                                        "unit": "px"
+                                    },
+                                    "backgroundColor": "White",
+                                    "position": "absolute",
+                                    "alignX": "right",
+                                    "paddingLeft": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingTop": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingRight": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    },
+                                    "paddingBottom": {
+                                        "value": 16,
+                                        "unit": "px"
+                                    }
+                                },
+                                "ports": [],
+                                "dynamicports": [],
+                                "children": [
+                                    {
+                                        "id": "cf2c25f5-2dff-2cc7-8ba4-18758bcf7c81",
+                                        "type": "Text",
+                                        "parameters": {
+                                            "textStyle": "Title Large",
+                                            "text": "Shopping Cart"
+                                        },
+                                        "ports": [],
+                                        "dynamicports": [],
+                                        "children": []
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "visualRoots": [
+                    "9a3b5705-92f0-959d-72e8-eb22cf446ad6"
                 ]
             }
         }
@@ -123,7 +1105,6 @@
     "rootNodeId": "246f9453-a119-ac78-171e-3806cf596ecc",
     "version": "4",
     "metadata": {
-        "dbCollections": [],
         "styles": {
             "text": {
                 "Display": {
@@ -166,7 +1147,7 @@
                         "value": "120%",
                         "unit": "px"
                     },
-                    "textTransform": "none"
+                    "textTransform": "uppercase"
                 },
                 "Title Medium": {
                     "fontFamily": "fonts/Roboto/Roboto-Medium.ttf",
@@ -299,7 +1280,8 @@
                 "Notice": "#F2C441",
                 "Danger": "#F75A4F",
                 "White": "#FFFFFF",
-                "Black": "#000000"
+                "Black": "#000000",
+                "Petroleum Blue": "#153C78"
             }
         }
     },
