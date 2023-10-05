@@ -62,7 +62,7 @@
                         "y": 120,
                         "parameters": {
                             "type": "csv",
-                            "csv": "ProductName,Maker,Category,Price\nContrast,Tom Crew,Accessories,40\nFerrous,Tom Crew,Accessories,50\nFika,Tom Crew,Tableware,35\nGlacier Bowl,Tom Crew,Tableware,40\nGlacier Plate,Tom Crew,Tableware,45\nGlacier Vase,Tom Crew,Vase,60\nPrism,Tom Crew,Tableware,40\nBirch,Oriento,Vase,88\nCarafe,Oriento,Tableware,75\nCorroded,Oriento,Accessories,68\nDot,Oriento,Accessories,55\nFjord,Oriento,Vase,98\nSeasons,Oriento,Vase,160\nZodiac,Oriento,Accessories,130\nBouy,Linh Le,Vase,75\nDrop,Linh Le,Vase,75\nFace no. 1,Linh Le,Vase,85\nFace no. 2,Linh Le,Vase,115\nGestalt,Linh Le,Vase,80"
+                            "csv": "productName,maker,category,price\nContrast,Tom Crew,Accessories,40\nFerrous,Tom Crew,Accessories,50\nFika,Tom Crew,Tableware,35\nGlacier Bowl,Tom Crew,Tableware,40\nGlacier Plate,Tom Crew,Tableware,45\nGlacier Vase,Tom Crew,Vase,60\nPrism,Tom Crew,Tableware,40\nBirch,Oriento,Vase,88\nCarafe,Oriento,Tableware,75\nCorroded,Oriento,Accessories,68\nDot,Oriento,Accessories,55\nFjord,Oriento,Vase,98\nSeasons,Oriento,Vase,160\nZodiac,Oriento,Accessories,130\nBouy,Linh Le,Vase,75\nDrop,Linh Le,Vase,75\nFace no. 1,Linh Le,Vase,85\nFace no. 2,Linh Le,Vase,115\nGestalt,Linh Le,Vase,80"
                         },
                         "ports": [],
                         "dynamicports": [],
@@ -566,19 +566,19 @@
                 "connections": [
                     {
                         "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
-                        "fromProperty": "prop-ProductName",
+                        "fromProperty": "prop-productName",
                         "toId": "0aba9836-7685-08cd-9c6c-5d48449d8a8a",
                         "toProperty": "text"
                     },
                     {
                         "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
-                        "fromProperty": "prop-Maker",
+                        "fromProperty": "prop-maker",
                         "toId": "0e4a0dc6-d92c-c4ce-027c-b6fac854115c",
                         "toProperty": "text"
                     },
                     {
                         "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
-                        "fromProperty": "prop-Price",
+                        "fromProperty": "prop-price",
                         "toId": "62412f7b-1eda-6f47-4598-3eab7bf84c23",
                         "toProperty": "myPrice"
                     },
@@ -590,13 +590,13 @@
                     },
                     {
                         "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
-                        "fromProperty": "prop-Maker",
+                        "fromProperty": "prop-maker",
                         "toId": "bac9ecc4-0ea5-a1f8-6e54-faa6558edb38",
                         "toProperty": "makerName"
                     },
                     {
                         "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
-                        "fromProperty": "prop-ProductName",
+                        "fromProperty": "prop-productName",
                         "toId": "bac9ecc4-0ea5-a1f8-6e54-faa6558edb38",
                         "toProperty": "productName"
                     },
@@ -731,7 +731,7 @@
                         "y": 223,
                         "parameters": {
                             "idSource": "foreach",
-                            "properties": "ProductName,Maker,Category,Price"
+                            "properties": "productName,maker,category,price"
                         },
                         "ports": [],
                         "dynamicports": [
@@ -742,16 +742,16 @@
                                 },
                                 "plug": "input/output",
                                 "group": "Properties",
-                                "name": "prop-ProductName",
-                                "displayName": "ProductName",
+                                "name": "prop-productName",
+                                "displayName": "productName",
                                 "index": 7
                             },
                             {
                                 "type": "signal",
                                 "plug": "output",
                                 "group": "Changed Events",
-                                "displayName": "ProductName Changed",
-                                "name": "changed-ProductName",
+                                "displayName": "productName Changed",
+                                "name": "changed-productName",
                                 "index": 8
                             },
                             {
@@ -761,16 +761,16 @@
                                 },
                                 "plug": "input/output",
                                 "group": "Properties",
-                                "name": "prop-Maker",
-                                "displayName": "Maker",
+                                "name": "prop-maker",
+                                "displayName": "maker",
                                 "index": 9
                             },
                             {
                                 "type": "signal",
                                 "plug": "output",
                                 "group": "Changed Events",
-                                "displayName": "Maker Changed",
-                                "name": "changed-Maker",
+                                "displayName": "maker Changed",
+                                "name": "changed-maker",
                                 "index": 10
                             },
                             {
@@ -780,16 +780,16 @@
                                 },
                                 "plug": "input/output",
                                 "group": "Properties",
-                                "name": "prop-Category",
-                                "displayName": "Category",
+                                "name": "prop-category",
+                                "displayName": "category",
                                 "index": 11
                             },
                             {
                                 "type": "signal",
                                 "plug": "output",
                                 "group": "Changed Events",
-                                "displayName": "Category Changed",
-                                "name": "changed-Category",
+                                "displayName": "category Changed",
+                                "name": "changed-category",
                                 "index": 12
                             },
                             {
@@ -799,16 +799,16 @@
                                 },
                                 "plug": "input/output",
                                 "group": "Properties",
-                                "name": "prop-Price",
-                                "displayName": "Price",
+                                "name": "prop-price",
+                                "displayName": "price",
                                 "index": 13
                             },
                             {
                                 "type": "signal",
                                 "plug": "output",
                                 "group": "Changed Events",
-                                "displayName": "Price Changed",
-                                "name": "changed-Price",
+                                "displayName": "price Changed",
+                                "name": "changed-price",
                                 "index": 14
                             }
                         ],
