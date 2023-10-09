@@ -2,21 +2,190 @@
     "name": "Webshop Workshop C&C",
     "components": [
         {
-            "name": "/App",
+            "name": "/#__cloud__/Get Products From Dato",
+            "id": "e018f0d1-bdb5-20ac-f227-83a5cf88bbd8",
             "graph": {
                 "connections": [
                     {
-                        "fromId": "d70392eb-73cc-9677-3aef-04b6c1c670c1",
-                        "fromProperty": "items",
-                        "toId": "fe1f6707-f435-8466-227a-39eaa8232d49",
-                        "toProperty": "items"
+                        "fromId": "ee30baa0-7493-fdf7-8a03-7489f2caf34f",
+                        "fromProperty": "value",
+                        "toId": "d0b29015-38e9-ed32-b64e-7c7d44220197",
+                        "toProperty": "in-apiKey"
                     },
                     {
-                        "fromId": "246f9453-a119-ac78-171e-3806cf596ecc",
-                        "fromProperty": "didMount",
-                        "toId": "d70392eb-73cc-9677-3aef-04b6c1c670c1",
-                        "toProperty": "storageFetch"
+                        "fromId": "5946c4e4-c604-0c75-a7ad-0d1d24069e88",
+                        "fromProperty": "receive",
+                        "toId": "d0b29015-38e9-ed32-b64e-7c7d44220197",
+                        "toProperty": "fetch"
                     },
+                    {
+                        "fromId": "f5943a58-8c7f-9c98-7a14-12ade66dfcc4",
+                        "fromProperty": "savedValue",
+                        "toId": "d0b29015-38e9-ed32-b64e-7c7d44220197",
+                        "toProperty": "in-query"
+                    },
+                    {
+                        "fromId": "d0b29015-38e9-ed32-b64e-7c7d44220197",
+                        "fromProperty": "out-items",
+                        "toId": "d98cf3ab-4047-bbdc-31b6-7fdd00718426",
+                        "toProperty": "pm-Items"
+                    },
+                    {
+                        "fromId": "d0b29015-38e9-ed32-b64e-7c7d44220197",
+                        "fromProperty": "success",
+                        "toId": "d98cf3ab-4047-bbdc-31b6-7fdd00718426",
+                        "toProperty": "send"
+                    }
+                ],
+                "roots": [
+                    {
+                        "id": "5946c4e4-c604-0c75-a7ad-0d1d24069e88",
+                        "type": "noodl.cloud.request",
+                        "x": -191,
+                        "y": 32,
+                        "parameters": {
+                            "allowNoAuth": true
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "d98cf3ab-4047-bbdc-31b6-7fdd00718426",
+                        "type": "noodl.cloud.response",
+                        "x": 539,
+                        "y": -31,
+                        "parameters": {
+                            "params": "Items"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "type": "*",
+                                "plug": "input",
+                                "group": "Parameters",
+                                "name": "pm-Items",
+                                "displayName": "Items",
+                                "index": 4
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "d0b29015-38e9-ed32-b64e-7c7d44220197",
+                        "type": "REST2",
+                        "x": 226.5,
+                        "y": 23,
+                        "parameters": {
+                            "resource": "https://graphql.datocms.com/",
+                            "method": "POST",
+                            "requestScript": "//Add custom code to setup the request object before the request\n//is made.\n//\n//*Request.resource     contains the resource path of the request.\n//*Request.method       contains the method, GET, POST, PUT or DELETE.\n//*Request.headers      is a map where you can add additional headers.\n//*Request.parameters   is a map the parameters that will be appended\n//                      to the url.\n//*Request.content      contains the content of the request as a javascript\n//                      object.\n//\nRequest.headers = {\n    'Content-Type': 'application/json',\n    'Accept': 'application/json',\n    'Authorization': 'Bearer '+Inputs.apiKey,\n}\n\nRequest.content = {'query': Inputs.query}",
+                            "responseScript": "// Add custom code to convert the response content to outputs\n//\n//*Response.status    The status code of the response\n//*Response.content   The content of the response as a javascript\n//                    object.\n//*Response.request   The request object that resulted in the response.\n//\n//*Inputs and *Outputs contain the inputs and outputs of the node.\nOutputs.items = Response.content.data.allProducts;"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "in-apiKey",
+                                "displayName": "apiKey",
+                                "plug": "input",
+                                "type": "*",
+                                "group": "Inputs",
+                                "index": 9
+                            },
+                            {
+                                "name": "in-query",
+                                "displayName": "query",
+                                "plug": "input",
+                                "type": "*",
+                                "group": "Inputs",
+                                "index": 10
+                            },
+                            {
+                                "name": "out-items",
+                                "displayName": "items",
+                                "plug": "output",
+                                "type": "*",
+                                "group": "Outputs",
+                                "index": 11
+                            }
+                        ],
+                        "children": [],
+                        "metadata": {
+                            "merge": {
+                                "soureCodePorts": [
+                                    "requestScript",
+                                    "responseScript"
+                                ]
+                            }
+                        }
+                    },
+                    {
+                        "id": "ee30baa0-7493-fdf7-8a03-7489f2caf34f",
+                        "type": "DbConfig",
+                        "x": -93,
+                        "y": -142,
+                        "parameters": {
+                            "configKey": "datoAPIkey"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "name": "configKey",
+                                "displayName": "Parameter",
+                                "group": "General",
+                                "type": {
+                                    "name": "enum",
+                                    "enums": [
+                                        {
+                                            "value": "datoAPIkey",
+                                            "label": "datoAPIkey"
+                                        }
+                                    ],
+                                    "allowEditOnly": true
+                                },
+                                "plug": "input",
+                                "index": 0
+                            },
+                            {
+                                "name": "useDevValue",
+                                "displayName": "Enable",
+                                "group": "Local Override",
+                                "type": "boolean",
+                                "default": false,
+                                "plug": "input",
+                                "index": 1
+                            },
+                            {
+                                "name": "value",
+                                "displayName": "Value",
+                                "group": "General",
+                                "type": "string",
+                                "plug": "output",
+                                "index": 2
+                            }
+                        ],
+                        "children": []
+                    },
+                    {
+                        "id": "f5943a58-8c7f-9c98-7a14-12ade66dfcc4",
+                        "type": "String",
+                        "x": -129.75,
+                        "y": 153,
+                        "parameters": {
+                            "value": "query{   allProducts {     id   \tproductName     productImage{        id       url     }     maker     category     price     _status     _firstPublishedAt   }    _allProductsMeta {     count   } }"
+                        },
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    }
+                ],
+                "visualRoots": []
+            }
+        },
+        {
+            "name": "/App",
+            "graph": {
+                "connections": [
                     {
                         "fromId": "246f9453-a119-ac78-171e-3806cf596ecc",
                         "fromProperty": "didMount",
@@ -58,6 +227,24 @@
                         "fromProperty": "modified",
                         "toId": "f050e5f9-bb45-070f-54dd-3274afbf052d",
                         "toProperty": "Do"
+                    },
+                    {
+                        "fromId": "35d13b93-7c7b-3b12-3a00-78db902e345e",
+                        "fromProperty": "switchedToOn",
+                        "toId": "fc9de153-7843-88c1-55ad-21688440ce87",
+                        "toProperty": "call"
+                    },
+                    {
+                        "fromId": "246f9453-a119-ac78-171e-3806cf596ecc",
+                        "fromProperty": "didMount",
+                        "toId": "d70392eb-73cc-9677-3aef-04b6c1c670c1",
+                        "toProperty": "storageFetch"
+                    },
+                    {
+                        "fromId": "d70392eb-73cc-9677-3aef-04b6c1c670c1",
+                        "fromProperty": "items",
+                        "toId": "fe1f6707-f435-8466-227a-39eaa8232d49",
+                        "toProperty": "items"
                     }
                 ],
                 "roots": [
@@ -107,8 +294,8 @@
                         "id": "a3e714e4-4a64-933e-717e-a80b71c6c7e6",
                         "type": "Static Data",
                         "label": "Local Items",
-                        "x": -805,
-                        "y": 7,
+                        "x": -799,
+                        "y": 8,
                         "parameters": {
                             "type": "csv",
                             "csv": "productName,maker,category,price\n,Tom Crew,Accessories,40\nFerrous,Tom Crew,Accessories,50\nFika,Tom Crew,Tableware,35\nGlacier Bowl,Tom Crew,Tableware,40\nGlacier Plate,Tom Crew,Tableware,45\nGlacier Vase,Tom Crew,Vase,60\nPrism,Tom Crew,Tableware,40\nBirch,Oriento,Vase,88\nCarafe,Oriento,Tableware,75\nCorroded,Oriento,Accessories,68\nDot,Oriento,Accessories,55\nFjord,Oriento,Vase,98\nSeasons,Oriento,Vase,160\nZodiac,Oriento,Accessories,130\nBouy,Linh Le,Vase,75\nDrop,Linh Le,Vase,75\nFace no. 1,Linh Le,Vase,85\nFace no. 2,Linh Le,Vase,115\nGestalt,Linh Le,Vase,80"
@@ -132,8 +319,8 @@
                     {
                         "id": "d70392eb-73cc-9677-3aef-04b6c1c670c1",
                         "type": "DbCollection2",
-                        "x": -453,
-                        "y": 139,
+                        "x": -495.86186920642893,
+                        "y": 135.54033642323793,
                         "parameters": {
                             "collectionName": "WebshopProducts",
                             "visualSort": [
@@ -492,6 +679,52 @@
                         },
                         "ports": [],
                         "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "35d13b93-7c7b-3b12-3a00-78db902e345e",
+                        "type": "Switch",
+                        "x": -1059.4771385425058,
+                        "y": 98.56094584084838,
+                        "parameters": {},
+                        "ports": [],
+                        "dynamicports": [],
+                        "children": []
+                    },
+                    {
+                        "id": "fc9de153-7843-88c1-55ad-21688440ce87",
+                        "type": "CloudFunction2",
+                        "x": -812,
+                        "y": 197,
+                        "parameters": {
+                            "function": "Get Products From Dato"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "plug": "input",
+                                "type": {
+                                    "name": "component",
+                                    "components": [
+                                        "/#__cloud__/Get Products From Dato"
+                                    ],
+                                    "ignoreSheetName": true,
+                                    "allowEditOnly": true
+                                },
+                                "group": "General",
+                                "displayName": "Function",
+                                "name": "function",
+                                "index": 4
+                            },
+                            {
+                                "name": "out-Items",
+                                "displayName": "Items",
+                                "type": "*",
+                                "plug": "output",
+                                "group": "Results",
+                                "index": 5
+                            }
+                        ],
                         "children": []
                     }
                 ],
@@ -5008,12 +5241,6 @@
             "graph": {
                 "connections": [
                     {
-                        "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
-                        "fromProperty": "prop-productImage",
-                        "toId": "06cb9177-50d9-cf8f-e4db-1fb71ab1029a",
-                        "toProperty": "src"
-                    },
-                    {
                         "fromId": "67392606-0ab5-2789-a573-ee713e66b368",
                         "fromProperty": "hoverStart",
                         "toId": "bd49285f-cdf1-42f4-60ec-7b4143c04b23",
@@ -5096,6 +5323,18 @@
                         "fromProperty": "eventReceived",
                         "toId": "e6c9cf8f-a6bb-adea-1c1b-4286ec190977",
                         "toProperty": "reset"
+                    },
+                    {
+                        "fromId": "f33ba429-b725-f938-7b8a-c2f74e166283",
+                        "fromProperty": "prop-productImage",
+                        "toId": "ec3a9ea3-c539-fa27-0061-d36d08f9baf6",
+                        "toProperty": "productImage"
+                    },
+                    {
+                        "fromId": "ec3a9ea3-c539-fa27-0061-d36d08f9baf6",
+                        "fromProperty": "result",
+                        "toId": "06cb9177-50d9-cf8f-e4db-1fb71ab1029a",
+                        "toProperty": "src"
                     }
                 ],
                 "roots": [
@@ -5737,6 +5976,36 @@
                         "ports": [],
                         "dynamicports": [],
                         "children": []
+                    },
+                    {
+                        "id": "ec3a9ea3-c539-fa27-0061-d36d08f9baf6",
+                        "type": "Expression",
+                        "x": -262.8812093461229,
+                        "y": 102.8177693117907,
+                        "parameters": {
+                            "expression": "productImage.url"
+                        },
+                        "ports": [],
+                        "dynamicports": [
+                            {
+                                "group": "Parameters",
+                                "name": "productImage",
+                                "type": {
+                                    "name": "*",
+                                    "editAsType": "string"
+                                },
+                                "plug": "input",
+                                "index": 7
+                            }
+                        ],
+                        "children": [],
+                        "metadata": {
+                            "merge": {
+                                "soureCodePorts": [
+                                    "expression"
+                                ]
+                            }
+                        }
                     }
                 ],
                 "visualRoots": [
